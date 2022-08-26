@@ -232,6 +232,7 @@ import Breadcrumb from '~/components/Breadcrumb.vue'
 import config from '~~/config'
 import { IOrderDetailRes } from '~/services/Account'
 import { LANGUAGE } from '~/constant/language'
+const DEFAULT_INVITER = '6529.bit'
 
 export default Vue.extend({
   name: 'AccountRegister',
@@ -502,7 +503,7 @@ export default Vue.extend({
           register_years: this.registrationPeriod,
           coin_type: this.connectedAccount.chain.coinType,
           inviter_account: this.inviter ? toDottedStyle(this.inviter + ACCOUNT_SUFFIX) : '',
-          channel_account: this.me.channel
+          channel_account: this.me.channel || DEFAULT_INVITER
         })
       }
       catch (err) {
@@ -653,7 +654,7 @@ export default Vue.extend({
             register_years: this.registrationPeriod,
             coin_type: this.connectedAccount.chain.coinType,
             inviter_account: this.inviter ? toDottedStyle(this.inviter + ACCOUNT_SUFFIX) : '',
-            channel_account: this.me.channel
+            channel_account: this.me.channel || DEFAULT_INVITER
           })
 
           if (!applyRegisterRes) {
@@ -797,6 +798,9 @@ export default Vue.extend({
       const _inviter = this.me.inviter
       if (_inviter) {
         this.inviter = toHashedStyle(_inviter).replace(/\.bit$/, '')
+      }
+      else {
+        this.inviter = toHashedStyle(DEFAULT_INVITER).replace(/\.bit$/, '')
       }
     },
     async checkInviter () {

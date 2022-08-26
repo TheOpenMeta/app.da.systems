@@ -182,24 +182,12 @@ export default Vue.extend({
     }
   },
   data () {
-    const torusList = ['google', 'twitter', 'discord', 'facebook', 'torus']
+    const torusList: string[] = []
 
     const walletList = [{
-      ...ETH,
-      title: (this.$tt('Connect ETH environment') as string),
-      protocol: WalletProtocol.metaMask
-    }, {
-      ...BSC,
-      title: (this.$tt('Connect BSC environment') as string),
-      protocol: WalletProtocol.metaMask
-    }, {
       ...Polygon,
       title: (this.$tt('Connect Polygon environment') as string),
       protocol: WalletProtocol.metaMask
-    }, {
-      ...TRON,
-      title: (this.$tt('Connect Tron environment') as string),
-      protocol: WalletProtocol.tronLink
     }]
 
     return {

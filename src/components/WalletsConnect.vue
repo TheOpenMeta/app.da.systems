@@ -60,7 +60,9 @@
           </span>
         </li>
       </ul>
-      <div class="wallets-connect__select-wallet-list__torus-label">
+      <div
+        v-if="torusList.length > 0"
+        class="wallets-connect__select-wallet-list__torus-label">
         {{ $tt('Connect with social.') }}
         <a
           class="wallets-connect__select-wallet-list__torus-faq"
@@ -68,7 +70,9 @@
           target="_blank"
         >{{ $tt('Guide') }}</a>
       </div>
-      <div class="wallets-connect__select-wallet-list__torus-container">
+      <div
+        v-if="torusList.length > 0"
+        class="wallets-connect__select-wallet-list__torus-container">
         <span
           v-for="(item, index) in torusList"
           :key="index"
